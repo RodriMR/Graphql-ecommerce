@@ -102,6 +102,8 @@ const typeDefs = gql`
     hello: [String!]!
     products: [Product!]!
     product(id: ID!): Product
+    categories: [Category!]!
+    category(id: ID!): Category
   }
   type Product {
     name: String!
@@ -129,6 +131,14 @@ const resolvers = {
       const product = products.find((product) => product.id === productId);
       if (!product) return null;
       return product;
+    },
+
+    categories: () => {
+      return categories;
+    },
+    category: (parent, args, context) => {
+      const { id } = args;
+      return categories.find((category) => category.id === id);
     },
   },
 };
