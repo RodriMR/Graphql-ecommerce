@@ -127,8 +127,8 @@ const resolvers = {
       return products;
     },
     product: (parent, args, context) => {
-      const productId = args.id;
-      const product = products.find((product) => product.id === productId);
+      const { id } = args;
+      const product = products.find((product) => product.id === id);
       if (!product) return null;
       return product;
     },
