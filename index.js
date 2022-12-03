@@ -114,7 +114,9 @@ const typeDefs = gql`
     onSale: Boolean!
   }
   type Category {
+    id: ID!
     name: String!
+    products: [Product!]!
   }
 `;
 
@@ -140,6 +142,11 @@ const resolvers = {
       const { id } = args;
       return categories.find((category) => category.id === id);
     },
+  },
+  Category: {
+products:(parent)
+
+
   },
 };
 const server = new ApolloServer({
